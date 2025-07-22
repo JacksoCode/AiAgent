@@ -2,18 +2,21 @@ import os
 
 def get_files_info(working_directory, directory="."):
     relative_path = os.path.join(working_directory, directory)
-    print(f"This is the realative path: {relative_path}")
+    absolute_path = os.path.abspath(relative_path)
+    wrk_directory = os.path.abspath(working_directory)
 
-    print(f"And this is the absolute path: {os.path.abspath(directory)}")
-
-    if os.path.abspath(directory) not in working_directory:
+    if not absolute_path.startswith(wrk_directory):
         return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
 
-    if os.path.isdir(directory) == False:
+    if os.path.isdir(absolute_path) == False:
         return f'Error: "{directory}" is not a directory'
 
-    r_path_list = os.listdir(relative_path)
-    print(f"This is a path list: {r_path_list}")
+    path_list = os.listdir(absolute_path)
+    final_form = ""
+    for p in path_list:
+        relative_sub_path = os.path.join(absolute_path, p)
+        sub_path = os.path.abspath(relative_sub_path)
+        final_form += f"- {p}: file_size={os.path.getsize(sub_path)}, is_dir={os.path.isdir(sub_path)}\n"
+    return final_form
 
-    for r in r_path_list:
-        return f"{r}: file_size={os.path.getsize(r)}, is_dir={os.path.isdir(r)}"
+
