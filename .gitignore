@@ -11,3 +11,6 @@ wheels/
 
 #API key
 .env
+
+#Tests.py Bloat
+lorum.txt
