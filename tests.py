@@ -1,26 +1,25 @@
-from functions.get_files_content import get_file_content
+from functions.run_python import run_python_file
 
 print("=====================================================")
-print("Result for lorum.txt file:")
-print(get_file_content("calculator", "lorum.txt"))
-print("=====================================================")
-
-print("=====================================================")
-print("Result for main.py file:")
-print(get_file_content("calculator", "main.py"))
+print("SHOULD PRINT CACLULATOR INSTRUCTIONS")
+print(run_python_file("calculator", "main.py"))
 print("=====================================================")
 
 print("=====================================================")
-print("Result for 'pkg/calculator.py' file:")
-print(get_file_content("calculator", "pkg/calculator.py"))
+print("SHOULD RUN CACLULATOR INSTRUCTIONS")
+print(run_python_file("calculator", "main.py", ["3 + 5"]))
 print("=====================================================")
 
 print("=====================================================")
-print("Result for '/bin/cat' file:")
-print(get_file_content("calculator", "/bin/cat"))
+print(run_python_file("calculator", "tests.py"))
 print("=====================================================")
 
 print("=====================================================")
-print("Result for 'pkg/does_not_exist.py' file:")
-print(get_file_content("calculator", "pkg/does_not_exist.py"))
+print("SHOULD RETURN ERROR")
+print(run_python_file("calculator", "../main.py"))
+print("=====================================================")
+
+print("=====================================================")
+print("SHOULD RETURN ERROR")
+print(run_python_file("calculator", "nonexistent.py"))
 print("=====================================================")
