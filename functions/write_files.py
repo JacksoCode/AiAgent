@@ -1,6 +1,9 @@
 import os
+from google import genai
+from google.genai import types
 
-def write_file(working_directory, file_path, content):
+
+def write_files(working_directory, file_path, content):
 
     absolute_path = os.path.abspath(os.path.join(working_directory, file_path))
     working_directory_path = os.path.abspath(working_directory)
@@ -21,3 +24,20 @@ def write_file(working_directory, file_path, content):
     except Exception as e:
         return f"Error writing files: {e}"
 
+schema_write_files = types.FunctionDeclaration(
+    name="write_files",
+    description="Write or create new files in the specified directory, constrained to the working directory.",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="The requested file to write or to overwrite, if file does not exist then write it",
+            ),
+            "content": types.Schema(
+                type=types.Type.STRING,
+                description="The content to write or overwrite to the new file.",
+            ),
+        },
+    ),
+)
