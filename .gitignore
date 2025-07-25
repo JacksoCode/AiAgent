@@ -13,6 +13,5 @@ wheels/
 .env
 
 #Tests.py Bloat
-lorum.txt
-morelorem.txt
 tests.py
+calculator/
