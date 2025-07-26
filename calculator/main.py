@@ -14,6 +14,7 @@ def main():
         return
 
     expression = " ".join(sys.argv[1:])
+    print(type(expression))
     try:
         result = calculator.evaluate(expression)
         to_print = render(expression, result)
