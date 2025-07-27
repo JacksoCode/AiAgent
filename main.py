@@ -155,8 +155,8 @@ def main():
                         print("===============================")
                         print(f"{response.text}")
                         print("===============================")
-                        print(f"- Prompt tokens: {prompt_tokens}")
-                        print(f"- Response tokens: {response_tokens}")
+                        print(f"- Prompt tokens: {prompt_token}")
+                        print(f"- Response tokens: {response_token}")
                         break
                     else:
                         print("Final response:")
